@@ -249,19 +249,21 @@ public class MapsActivity extends FragmentActivity implements GoogleApiClient.Co
             public boolean onMarkerClick(Marker arg0) {
                 Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.slide_up);
-                LinearLayout r = (LinearLayout)findViewById(R.id.info);
+                LinearLayout r = (LinearLayout) findViewById(R.id.info);
                 int hashCode = arg0.hashCode();
-                Parking parking= markerParking.get(hashCode);
+                Parking parking = markerParking.get(hashCode);
+                if (parking != null)
+                {
 
-                TextView parkingNameView =  (TextView)r.findViewById(R.id.slide_text);
-                TextView spacesCarView =  (TextView)r.findViewById(R.id.spacesCarView);
-                TextView spacesMotoView =  (TextView)r.findViewById(R.id.spacesMotoView);
-                TextView tarifaView =  (TextView)r.findViewById(R.id.rateView);
+                    TextView parkingNameView = (TextView) r.findViewById(R.id.slide_text);
+                TextView spacesCarView = (TextView) r.findViewById(R.id.spacesCarView);
+                TextView spacesMotoView = (TextView) r.findViewById(R.id.spacesMotoView);
+                TextView tarifaView = (TextView) r.findViewById(R.id.rateView);
 
 
                 String remainingSpacesCar = parking.getCarSpacesAvailable() + "/" + parking.getCarSpacesTotal();
                 String remainingSpacesMoto = parking.getMotorBikeSpacesAvailable() + "/" + parking.getMotorBikeSpacesTotal();
-                String rate = "Tarifa: "+ parking.getRate() + "Bs";
+                String rate = "Tarifa: " + parking.getRate() + "Bs";
 
                 parkingNameView.setText(parking.getParkingName());
                 spacesCarView.setText(remainingSpacesCar);
@@ -269,7 +271,8 @@ public class MapsActivity extends FragmentActivity implements GoogleApiClient.Co
                 tarifaView.setText(rate);
                 r.startAnimation(slide_up);
                 r.setVisibility(View.VISIBLE);
-                 // Toast.makeText(MainActivity.this, arg0.getTitle(), Toast.LENGTH_SHORT).show();// display toast
+                // Toast.makeText(MainActivity.this, arg0.getTitle(), Toast.LENGTH_SHORT).show();// display toast
+            }
                 return true;
             }
 
@@ -282,8 +285,10 @@ public class MapsActivity extends FragmentActivity implements GoogleApiClient.Co
                 Animation slide_down     = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.slide_down);
                 LinearLayout r = (LinearLayout)findViewById(R.id.info);
-                r.startAnimation(slide_down);
-                r.setVisibility(View.INVISIBLE);
+               if(r.getVisibility() == View.VISIBLE) {
+                   r.startAnimation(slide_down);
+                   r.setVisibility(View.INVISIBLE);
+               }
 
             }
         });

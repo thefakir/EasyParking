@@ -62,7 +62,7 @@ public class Utility {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         try {
-            final String PARKING_BASE_URL = "http://www.easyparking.somee.com/";
+            final String PARKING_BASE_URL = "http://easyparking.azurewebsites.net/";
             final String API_PATH = "api";
             final String PARKING = "Parking";
 

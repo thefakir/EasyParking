@@ -97,14 +97,14 @@
                 android:text="5/10"
                 android:textSize="23dp"
                 android:layout_weight="2"/>
-            <Button
+            <TextView
+                android:id="@+id/disponibilidadView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="23dp"
                 android:textColor="@color/white"
-                android:background="@android:color/transparent"
-                android:text="Reservar"
-                android:textAlignment="center"
+                android:textSize="23dp"
+                android:gravity="center"
+                android:text="Abierto!!!!!!"
                 android:layout_weight="1"/>
 
         </LinearLayout>
